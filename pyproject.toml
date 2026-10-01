@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "verqen-game-ai"
+version = "1.0.0"
+description = "Plug-and-play neural AI opponents for Python games: 99.1% optimal on Tic-Tac-Toe, 93.3% on Tetris"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "ZorQelis AI" }]
+keywords = ["game-ai", "decision-models", "verqen", "reinforcement-learning", "neural", "pygame"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+overlay = ["pygame>=2.5"]
+gym = ["gymnasium>=0.29"]
+chess = ["python-chess>=1.10"]
+gpu = ["torch>=2.5", "safetensors>=0.4"]
+dev = ["pytest>=8.0", "build>=1.2"]
+
+[project.urls]
+Homepage = "https://github.com/ZorQelis-AI/verqen-game-ai"
+Repository = "https://github.com/ZorQelis-AI/verqen-game-ai"
+Documentation = "https://github.com/ZorQelis-AI/verqen-game-ai#readme"
+"Bug Tracker" = "https://github.com/ZorQelis-AI/verqen-game-ai/issues"
+
+[tool.setuptools.packages.find]
+include = ["verqen_game_ai*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "live: tests that need a local VerQen checkpoint (set VERQEN_CHECKPOINT)",
+]
